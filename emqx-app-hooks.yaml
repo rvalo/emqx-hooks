@@ -12,8 +12,21 @@ spec:
         - name: ingress-config
           image: rvalo/argohook
           command:
-            - "/bin/bash"
-            - "-c"
-            - "kubectl get configmap/nginx-ingress-tcp-microk8s-conf -oyaml -n ingress | yq e '.data.1883 = mqtt/emqx:1883' - | kubectl apply -f -"
+            - "kubectl"
+            - "get"
+            - "configmap/nginx-ingress-tcp-microk8s-conf"
+            - "-oyaml"
+            - "-n"
+            - "ingress"
+            - "|"
+            - "yq"
+            - "e"
+            - "'.data.1883 = mqtt/emqx:1883'"
+            - "-"
+            - "|"
+            - "kubectl"
+            - "apply"
+            - "-f"
+            - "-"
       restartPolicy: Never
   backoffLimit: 2
