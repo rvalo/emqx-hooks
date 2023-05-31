@@ -12,8 +12,8 @@ spec:
         - name: ingress-config
           image: rvalo/argohook
           command:
-            - "/bin/bash"
-            - "-c"
-            - "kubectl get configmap/nginx-ingress-tcp-microk8s-conf -oyaml -n ingress | yq e '.data.1883 = \"mqtt/emqx:1883\"' - | kubectl apply -f - && kubectl get daemonset/nginx-ingress-microk8s-controller -oyaml -n ingress | yq e '.spec.template.spec.containers[].ports += [{\"containerPort\":1883,\"hostPort\":1883,\"name\":\"mqtt\",\"protocol\":\"TCP\"}]' - | kubectl apply -f -"
+            - /bin/bash
+            - -c
+            - kubectl get configmap/nginx-ingress-tcp-microk8s-conf -oyaml -n ingress | yq e '.data.1883 = "mqtt/emqx:1883"' - | kubectl apply -f -
       restartPolicy: Never
   backoffLimit: 2
