@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
         - name: ingress-config
-          image: rvalo/argohook
+          image: registry.kube.sysvr.site/public/argohook
           command:
             - "/bin/bash"
             - "-c"
